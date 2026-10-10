@@ -1,5 +1,5 @@
 # ==========================================================
-# 3-2-1 ANN  (3 inputs -> 2 hidden neurons -> 1 output)
+# 3-3-1 ANN  (3 inputs -> 3 hidden neurons -> 1 output)
 # Written in the same style as the FP-BP lab PDF
 # ==========================================================
 
