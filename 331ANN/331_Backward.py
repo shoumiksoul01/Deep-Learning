@@ -40,6 +40,11 @@ w9 = 0.6
 w10 = 0.3
 w11 = 0.5
 b4= 0.1
+
+# Learning Rate
+lr = 0.1
+ 
+
 # Step 4: Hidden Neuron Calculation
 z1 = (x1 * w1) + (x2 * w2) + (x3 * w3) + b1
 h1 = sigmoid(z1)
@@ -60,6 +65,7 @@ b3 = 0.1
 z4 = (h1 * w7) + (h2 * w8) + (h3*w12) + b3
 y1 = sigmoid(z4)
 
+
 # Step 7: Actual Output
 t1 = 1
 
@@ -72,6 +78,8 @@ delta_y1 = error * sigmoid_derivative(y1)
  
 delta_h1 = delta_y1 * w7 * sigmoid_derivative(h1)
 delta_h2 = delta_y1 * w8 * sigmoid_derivative(h2)
+delta_h3 = delta_y1 * w12 * sigmoid_derivative(h3)
+
  
 # ====================
 # WEIGHT UPDATES
@@ -79,6 +87,7 @@ delta_h2 = delta_y1 * w8 * sigmoid_derivative(h2)
  
 w7 = w7 + (lr * h1 * delta_y1)
 w8 = w8 + (lr * h2 * delta_y1)
+w12 = w12 + (lr * h3 * delta_y1)
 b3 = b3 + (lr * delta_y1)
  
 w1 = w1 + (lr * x1 * delta_h1)
@@ -90,6 +99,11 @@ w4 = w4 + (lr * x1 * delta_h2)
 w5 = w5 + (lr * x2 * delta_h2)
 w6 = w6 + (lr * x3 * delta_h2)
 b2 = b2 + (lr * delta_h2)
+
+w9 = w9 + (lr *  x1 * delta_h3)
+w10 = w10 + (lr * x2 * delta_h3)
+w11 = w11 + (lr * x3 * delta_h3)
+b4 = b4 + (lr * delta_h3)
  
 # Display Results
 print("\n\n===== AFTER BACKPROPAGATION =====")
@@ -105,10 +119,17 @@ print("w4 =", w4)
 print("w5 =", w5)
 print("w6 =", w6)
 print("b2 =", b2)
+
+print("\nUpdated Hidden Layer (Neuron 3)")
+print("w9 =", w9)
+print("w10 =", w10)
+print("w11 =", w11)
+print("b4 =", b4)
  
 print("\nUpdated Output Layer")
 print("w7 =", w7)
 print("w8 =", w8)
+print("w12 =", w12)
 print("b3 =", b3)
  
 print("\nPredicted Output =", y1)
